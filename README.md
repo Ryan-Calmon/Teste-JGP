@@ -343,6 +343,7 @@ curl "http://127.0.0.1:8000/emissoes/1/historico"
 
 ## 🖼️ Screenshots
 
+![Tela Inicial do App](screenshots/DashbordPrincipal.jpg)
 ### Dashboard
 
 O dashboard apresenta uma visão geral do mercado com:
@@ -355,6 +356,7 @@ O dashboard apresenta uma visão geral do mercado com:
 
 ### Página de Emissões
 
+![Emissões](screenshots/Emissoes.jpg)
 A página de emissões contém:
 
 - **Filtros**: Por tipo, emissor, intervalo de datas e faixa de valores
@@ -363,6 +365,7 @@ A página de emissões contém:
 - **Ações**: Botões para editar e visualizar histórico de cada emissão
 
 ### Modal de Edição
+![Modal de Edição](screenshots/AlteracaoEmissao.jpg)
 
 O modal de edição inclui:
 
@@ -372,6 +375,7 @@ O modal de edição inclui:
 - **Identificação do Gestor**: Registro de quem está fazendo a alteração
 
 ### Modal de Histórico
+![Histórico de Alterações](screenshots/HistoricoAlteracoes.jpg)
 
 O modal de histórico exibe:
 
