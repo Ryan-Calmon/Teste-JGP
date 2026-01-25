@@ -1,9 +1,10 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc, asc
 from typing import Optional, List
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import models
 import schemas
+BRASILIA_TZ = timezone(timedelta(hours=-3))
 
 def get_emissoes(
     db: Session,
@@ -86,22 +87,38 @@ def update_emissao(db: Session, emissao_id: int, emissao_data: schemas.EmissaoUp
         return None
     
     gestor_nome = emissao_data.gestor_nome or "Anônimo"
-    
-    update_data = emissao_data.model_dump(exclude_unset=True, exclude={"gestor_nome"})
-    
     campos_alterados = {}
+    update_data = emissao_data.model_dump(exclude_unset=True, exclude={"gestor_nome"})
+
     for campo, novo_valor in update_data.items():
         valor_antigo = getattr(emissao, campo)
-        if valor_antigo != novo_valor:
-            campos_alterados[campo] = {
-                "anterior": str(valor_antigo) if valor_antigo else None,
-                "novo": str(novo_valor) if novo_valor else None
-            }
+        if campo == 'data':
+            if isinstance(valor_antigo, datetime):
+                valor_antigo_date = valor_antigo.date()
+            else:
+                valor_antigo_date = valor_antigo
+            
+            if isinstance(novo_valor, datetime):
+                novo_valor_date = novo_valor.date()
+            else:
+                novo_valor_date = novo_valor
+            if valor_antigo_date != novo_valor_date:
+                campos_alterados[campo] = {
+                    "anterior": str(valor_antigo_date),
+                    "novo": str(novo_valor_date)
+                }
+        else:
+            if valor_antigo != novo_valor:
+                campos_alterados[campo] = {
+                    "anterior": str(valor_antigo) if valor_antigo else None,
+                    "novo": str(novo_valor) if novo_valor else None
+                }
     
     if campos_alterados:
         historico = models.HistoricoAlteracao(
             emissao_id=emissao_id,
             gestor_nome=gestor_nome,
+            data_alteracao=datetime.now(BRASILIA_TZ),
             campos_alterados=campos_alterados
         )
         db.add(historico)
