@@ -555,5 +555,8 @@ Agradeço à equipe da **JGP Crédito** pela oportunidade de participar deste pr
 ---
 
 <div align="center">
-  <img src="https://jgp.com.br/wp-content/uploads/2023/06/JGP-white-1.svg" alt="JGP" width="150" style="background-color: #00A651; padding: 15px; border-radius: 8px;">
+  <img 
+          src="https://jgp.com.br/wp-content/uploads/2023/06/JGP-white-1.svg" 
+          alt="JGP" 
+    />
 </div>
