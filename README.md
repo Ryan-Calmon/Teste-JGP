@@ -19,7 +19,6 @@ Sistema web fullstack para gestão e visualização de dados de emissões do mer
 - [Documentação da API](#-documentação-da-api)
 - [Screenshots](#️-screenshots)
 - [Diferenciais Implementados](#-diferenciais-implementados)
-- [Deploy](#-deploy)
 - [Autor](#-autor)
 
 ---
