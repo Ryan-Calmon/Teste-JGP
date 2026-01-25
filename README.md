@@ -376,6 +376,7 @@ O modal de edição inclui:
 
 ### Modal de Histórico
 ![Histórico de Alterações](screenshots/HistoricoAlteracoes.jpg)
+
 O modal de histórico exibe:
 
 - **Lista Cronológica**: Todas as alterações ordenadas por data
