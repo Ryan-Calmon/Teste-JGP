@@ -1,0 +1,26 @@
+.gestor-modal {
+  max-width: 500px;
+  text-align: center;
+  padding: 50px 10px;
+}
+.header-logo-gestormodal {
+  height: 47px;
+  width: auto;
+  background-color: #30ba09; /* Verde JGP */
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+
+.gestor-modal h2 {
+  margin-bottom: 8px;
+}
+
+.gestor-modal p {
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.gestor-modal .form-group {
+  text-align: left;
+}

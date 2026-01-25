@@ -1,0 +1,140 @@
+.emissoes-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.filtros-card {
+  background: var(--surface);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.filtros-card h3 {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filtros-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.table-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.table-count {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table-responsive table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-responsive th,
+.table-responsive td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-responsive th {
+  background: var(--background);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+  cursor: pointer;
+  user-select: none;
+}
+
+.table-responsive th:hover {
+  background: #e2e8f0;
+}
+
+.sort-icon {
+  margin-left: 4px;
+  opacity: 0.5;
+}
+
+.table-responsive tr:hover {
+  background: #f8fafc;
+}
+
+.emissor-cell {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.valor-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+
+.acoes-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.link-cvm {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-cvm:hover {
+  text-decoration: underline;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.pagination-info {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .filtros-grid {
+    grid-template-columns: 1fr;
+  }
+}

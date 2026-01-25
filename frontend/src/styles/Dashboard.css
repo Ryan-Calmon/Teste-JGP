@@ -1,0 +1,98 @@
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.chart-card {
+  background: var(--surface);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.chart-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.table-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.table-card h3 {
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-card th,
+.table-card td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.table-card th {
+  background: var(--background);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.icone-money{
+    margin-top:5px;
+    font-size: 45px;
+}
+.icone-emissoes{
+    margin-top:5px;
+    font-size: 35px;
+}
+.chart-full-width {
+  margin-bottom: 24px;
+}
+
+.chart-header {
+  margin-bottom: 16px;
+}
+
+.chart-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.chart-header p {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+@media (max-width: 768px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}

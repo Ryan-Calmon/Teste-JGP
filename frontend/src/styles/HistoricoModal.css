@@ -1,0 +1,80 @@
+.historico-modal {
+  max-width: 600px;
+}
+
+.emissao-info {
+  padding: 12px;
+  background: var(--background);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+}
+
+.historico-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.historico-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.historico-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--background);
+  font-size: 0.875rem;
+}
+
+.historico-gestor {
+  font-weight: 500;
+}
+
+.historico-data {
+  color: var(--text-light);
+}
+
+.historico-alteracoes {
+  padding: 12px 16px;
+}
+
+.alteracao-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+.alteracao-item:last-child {
+  border-bottom: none;
+}
+
+.alteracao-campo {
+  font-weight: 500;
+  min-width: 80px;
+}
+
+.alteracao-anterior {
+  color: var(--danger);
+  text-decoration: line-through;
+}
+
+.alteracao-seta {
+  color: var(--text-light);
+}
+
+.alteracao-novo {
+  color: var(--success);
+  font-weight: 500;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-light);
+}
