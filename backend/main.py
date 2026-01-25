@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import Optional
 from database import engine, get_db
@@ -14,21 +15,22 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],  
+)
 
 @app.get("/")
 def read_root():
-    return {"message": "Bem-vindo à API JGP Crédito!"}
+    return {"message": "Rota principal da API"}
 
 
 @app.get("/health")
 def health_check():
-    return {"status": "ok", "message": "API funcionando corretamente"}
-
-
-@app.get("/info")
-def info_check():
-    return {"nome": "Ryan Calmon", "data": "24/01/2026"}
-
+    return {"status": "ok", "message": "API funcionando"}
 
 @app.get("/emissoes")
 def listar_emissoes(
@@ -42,12 +44,11 @@ def listar_emissoes(
     valor_max: Optional[float] = Query(None, description="Valor máximo"),
     sort_by: str = Query("data", description="Campo para ordenação"),
     sort_order: str = Query("desc", description="Ordem: asc ou desc"),
-    # Dependência do banco de dados
     db: Session = Depends(get_db)
 ):
     skip = (page - 1) * page_size
     
-    resultado = crud.get_emissoes(
+    return crud.get_emissoes(
         db=db,
         skip=skip,
         limit=page_size,
@@ -61,7 +62,6 @@ def listar_emissoes(
         sort_order=sort_order
     )
     
-    return resultado
 
 
 @app.get("/emissoes/tipos")
@@ -86,15 +86,19 @@ def atualizar_emissao(
     emissao_data: schemas.EmissaoUpdate,
     db: Session = Depends(get_db)
 ):
-
-    emissao = crud.update_emissao(db, emissao_id, emissao_data)
-    
+    emissao = crud.update_emissao(db, emissao_id, emissao_data)    
     if emissao is None:
-        raise HTTPException(status_code=404, detail="Emissão não encontrada")
-    
+        raise HTTPException(status_code=404, detail="Emissão não encontrada")   
     return emissao
 
+@app.get("/emissoes/{emissao_id}/historico")
+def buscar_historico(emissao_id: int, db: Session = Depends(get_db)):
+    return crud.get_historico_emissao(db, emissao_id)
 
+@app.get("/stats/evolucao-mensal")
+def obter_evolucao_mensal(db: Session = Depends(get_db)):
+    """Retorna a evolução mensal de emissões."""
+    return crud.get_evolucao_mensal(db)
 
 @app.get("/stats")
 def obter_estatisticas(db: Session = Depends(get_db)):
