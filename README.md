@@ -550,13 +550,7 @@ Este projeto foi desenvolvido para fins de avaliação técnica no processo sele
 
 ## 🙏 Agradecimentos
 
-Agradeço à equipe da **JGP Crédito** pela oportunidade de participar deste processo seletivo e pelo desafio técnico proposto, que me permitiu demonstrar habilidades em desenvolvimento fullstack.
+Agradeço à equipe da **JGP Crédito** pela oportunidade de participar deste processo seletivo e pelo desafio técnico, que permitiu me desafiar e demonstrar minhas habilidades em desenvolvimento fullstack.
 
 ---
 
-<div align="center">
-  <img 
-          src="https://jgp.com.br/wp-content/uploads/2023/06/JGP-white-1.svg" 
-          alt="JGP" 
-    />
-</div>
