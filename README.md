@@ -102,7 +102,7 @@ O sistema utiliza a base de dados `Primario2025.xlsx` contendo **1.349 emissões
 | **Validação de Dados** | Validação no backend e frontend | ✅ Implementado |
 | **Controle de Alterações** | Histórico completo de modificações com auditoria | ✅ Implementado |
 | **Deploy e Nuvem** | Aplicação publicada e funcional em ambiente de produção | ✅ Implementado |
-| **Dockerização do projeto** |   || ✅ Implementado |
+| **Dockerização do projeto** | Containerização configurada com Docker e Docker Compose  | ✅ Implementado |
 
 
 ---
