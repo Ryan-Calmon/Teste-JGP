@@ -14,15 +14,15 @@ origins = [
     "http://127.0.0.1:5173",
     "http://127.0.0.1:3000",
     "https://testejgp-ryancalmon.vercel.app",
+    "https://testejgp-ryancalmon.vercel.app/", 
 ]
 
-# Também pode pegar de variável de ambiente
 frontend_url = os.getenv("FRONTEND_URL")
 if frontend_url:
     origins.append(frontend_url)
 
-# Remove strings vazias
-origins = [o for o in origins if o]
+# Remove strings vazias e duplicatas
+origins = list(set([o for o in origins if o]))
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -38,13 +38,6 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_credentials=True,
-    allow_methods=["*"], 
-    allow_headers=["*"],  
 )
 
 @app.get("/")
