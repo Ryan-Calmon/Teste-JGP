@@ -10,7 +10,7 @@ Sistema web fullstack para gestão e visualização de dados de emissões do mer
 
 ---
 
-## 📋 Índice
+## Índice
 
 - [Sobre o Projeto](#-sobre-o-projeto)
 - [Tecnologias Utilizadas](#️-tecnologias-utilizadas)
@@ -24,7 +24,7 @@ Sistema web fullstack para gestão e visualização de dados de emissões do mer
 
 ---
 
-## 📖 Sobre o Projeto
+## Sobre o Projeto
 
 O projeto foi desenvolvido para o processo seletivo de estágio na **JGP Crédito**. O objetivo é criar uma aplicação web que permita:
 
@@ -84,7 +84,7 @@ O sistema utiliza a base de dados `Primario2025.xlsx` contendo **1.349 emissões
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 ### Requisitos Obrigatórios 
 
@@ -444,7 +444,7 @@ O modal de histórico exibe:
 
 ---
 
-## 🏆 Diferenciais Implementados
+## Diferenciais Implementados
 
 ### 1. Validação de Dados
 
@@ -626,6 +626,23 @@ Desenvolvedor Fullstack | Estudante
 - **Tipos de Emissão:** CRI, CRA, DEB, NC
 - **Período:** Ano de 2025
 ---
+
+---
+
+## Melhorias Futuras
+
+Embora o projeto atenda aos requisitos funcionais, as seguintes evoluções são planejadas para aumentar a flexibilidade e a segurança da aplicação:
+
+- **Autenticação e Gestão de Usuários:**
+  Substituir a atual identificação simples (modal) por um sistema completo de **Login e Autenticação (JWT)**. Isso permitirá que cada gestor tenha sua conta individual, senha criptografada e persistência de sessão, garantindo maior tracking nas auditorias.
+
+- **Testes Automatizados:**
+  Implementação de de testes para garantir a estabilidade do código a longo prazo:
+  - **Backend:** Testes unitários e de integração utilizando `pytest`.
+  - **Frontend:** Testes de componentes e interfaces utilizando `Jest` ou `Vitest`.
+
+- **Criação de Gráficos Personalizados:**
+  Expandir o Dashboard para incluir uma ferramenta de construção de relatórios, permitindo que o usuário selecione dinamicamente as métricas, eixos e filtros para **gerar seus próprios gráficos** pela interface, sem necessidade de alteração no código.
 
 ## 📄 Licença
 
