@@ -6,7 +6,24 @@ from database import engine, get_db
 import models
 import schemas
 import crud
+import os
 
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    os.getenv("FRONTEND_URL", "" ), 
+]
+
+# Remove strings vazias
+origins = [o for o in origins if o]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(

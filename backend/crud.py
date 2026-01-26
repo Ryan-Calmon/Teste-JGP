@@ -104,7 +104,7 @@ def update_emissao(db: Session, emissao_id: int, emissao_data: schemas.EmissaoUp
                 novo_valor_date = novo_valor
             if valor_antigo_date != novo_valor_date:
                 campos_alterados[campo] = {
-                    "anterior": str(valor_antigo_date),
+                    "anterior": str(valor_antigoc_date),
                     "novo": str(novo_valor_date)
                 }
         else:
