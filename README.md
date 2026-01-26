@@ -91,6 +91,8 @@ O sistema utiliza a base de dados `Primario2025.xlsx` contendo **1.349 emissões
 |----------------|-----------|--------|
 | **Validação de Dados** | Validação no backend e frontend | ✅ Implementado |
 | **Controle de Alterações** | Histórico completo de modificações com auditoria | ✅ Implementado |
+| **Deploy e Nuvem** | Aplicação publicada e funcional em ambiente de produção | ✅ Implementado |
+
 
 ---
 
@@ -155,6 +157,16 @@ jgp-credito/
 
 ---
 
+## 🌐 Deploy Online
+
+A aplicação foi publicada e pode ser acessada nos links abaixo:
+
+- **Frontend (Vercel):** [https://testejgp-ryancalmon.vercel.app/](https://testejgp-ryancalmon.vercel.app/)
+- **Backend API (Render):** [https://api-jgp-ryan.onrender.com/docs](https://api-jgp-ryan.onrender.com/docs)
+
+> 💡 **Nota sobre o acesso:** Como o backend está hospedado no plano gratuito do Render, o servidor entra em modo de espera após um período de inatividade. O primeiro acesso pode levar cerca de **40 a 60 segundos** para carregar enquanto a instância "acorda".
+
+---
 ## 🚀 Instalação e Execução Local
 
 ### Pré-requisitos
@@ -531,7 +543,15 @@ def update_emissao(db: Session, emissao_id: int, emissao_update: schemas.Emissao
   }
 }
 ```
+### 3. Deploy e Disponibilidade (Cloud)
 
+Para demonstrar a aplicação em ambiente real, foi realizado o deploy utilizando Vercel (Frontend) e Render (Backend).
+
+* **Frontend (Vercel):** Publicado na Verceç, permitindo o acesso à interface e integração com a API.
+* **Backend (Render):** API FastAPI hospedada no Render, conectada ao banco SQLite persistente.
+* **Acesso Live:** [testejgp-ryancalmon.vercel.app](https://testejgp-ryancalmon.vercel.app/)
+
+> 💡 **Nota:** Por utilizar instâncias gratuitas no Render, o backend pode levar cerca de 40 segundos para inicializar na primeira requisição (cold start). Uma vez ativo, as respostas são processadas normalmente.
 ---
 
 ## 👨‍💻 Autor
