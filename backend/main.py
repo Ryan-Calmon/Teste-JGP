@@ -21,7 +21,6 @@ frontend_url = os.getenv("FRONTEND_URL")
 if frontend_url:
     origins.append(frontend_url)
 
-# Remove strings vazias e duplicatas
 origins = list(set([o for o in origins if o]))
 
 models.Base.metadata.create_all(bind=engine)
