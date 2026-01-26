@@ -11,7 +11,7 @@ import os
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    os.getenv("FRONTEND_URL", "" ), 
+    os.getenv("https://testejpg-ryancalmon.vercel.app/", "" ), 
 ]
 
 # Remove strings vazias
