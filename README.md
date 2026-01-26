@@ -6,7 +6,7 @@ Sistema web fullstack para gestão e visualização de dados de emissões do mer
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.109-green?logo=fastapi)
 ![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
 ![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite)
-![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?&logo=docker)
 
 ---
 
