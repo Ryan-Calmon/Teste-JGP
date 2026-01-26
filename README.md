@@ -6,6 +6,7 @@ Sistema web fullstack para gestão e visualização de dados de emissões do mer
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.109-green?logo=fastapi)
 ![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react)
 ![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 ---
 
@@ -72,6 +73,15 @@ O sistema utiliza a base de dados `Primario2025.xlsx` contendo **1.349 emissões
 | **Recharts** | 2.10 | Biblioteca de gráficos para React |
 | **React Icons** | 5.0 | Biblioteca de ícones para React |
 
+### DevOps
+| Tecnologia | Descrição |
+|------------|-----------|
+| **Docker** | Containerização da aplicação |
+| **Docker Compose** | Orquestração de múltiplos containers |
+| **Nginx** | Servidor web para o frontend em produção |
+| **Vercel** | Hospedagem do frontend |
+| **Render** | Hospedagem do backend |
+
 ---
 
 ## ✨ Funcionalidades
@@ -92,6 +102,7 @@ O sistema utiliza a base de dados `Primario2025.xlsx` contendo **1.349 emissões
 | **Validação de Dados** | Validação no backend e frontend | ✅ Implementado |
 | **Controle de Alterações** | Histórico completo de modificações com auditoria | ✅ Implementado |
 | **Deploy e Nuvem** | Aplicação publicada e funcional em ambiente de produção | ✅ Implementado |
+| **Dockerização do projeto** | ✅ Implementado |
 
 
 ---
@@ -111,6 +122,8 @@ jgp-credito/
 │   ├── requirements.txt          # Dependências Python
 │   ├── database.db               # Banco de dados SQLite
 │   └── Primario2025.xlsx         # Arquivo Excel com dados originais
+│   ├── render.yaml
+│   ├── Procfile
 │
 ├── frontend/                     # Aplicação React
 │   ├── src/
@@ -146,13 +159,17 @@ jgp-credito/
 │   │   ├── App.jsx               # Componente principal e rotas
 │   │   ├── main.jsx
 │   │   └── index.css             # Importação de estilos globais
+│   │   ├── env.production        # Variáveis de ambiente para a produção
 │   │
 │   ├── package.json             
 │   ├── vite.config.js         
-│ 
-│
-├── .gitignore                   
-└── README.md                    
+├── Dockerfile.backend          # Dockerfile do backend
+├── Dockerfile.frontend         # Dockerfile do frontend
+├── docker-compose.yml          # Orquestração dos containers
+├── nginx.conf                  # Configuração do Nginx
+├── .dockerignore               # Arquivos ignorados pelo Docker
+├── .gitignore                  # Arquivos ignorados pelo Git
+└── README.md                   # Este arquivo                  
 ```
 
 ---
@@ -227,6 +244,34 @@ npm run dev
 3. Navegue pelo Dashboard e pela página de Emissões
 
 ---
+## 🐳 Docker
+
+### Execução com Docker Compose
+
+A forma mais simples de executar todo o projeto:
+
+```bash
+# Na raiz do projeto
+docker-compose build
+docker-compose up
+```
+
+Acesse:
+- **Frontend:** http://localhost:3000
+- **Backend:** http://localhost:8000
+- **API Docs:** http://localhost:8000/docs
+
+### Comandos Úteis
+
+| Comando | Descrição |
+|---------|-----------|
+| `docker-compose up` | Inicia os containers |
+| `docker-compose up -d` | Inicia em segundo plano |
+| `docker-compose down` | Para os containers |
+| `docker-compose logs -f` | Visualiza logs em tempo real |
+| `docker-compose build --no-cache` | Reconstrói sem cache |
+
+---
 
 ## 📚 Documentação da API
 
@@ -234,8 +279,8 @@ npm run dev
 
 O FastAPI gera automaticamente documentação:
 
-- **Swagger UI**: http://127.0.0.1:8000/docs
-- **ReDoc**: http://127.0.0.1:8000/redoc
+- **Swagger UI:** http://localhost:8000/docs
+- **ReDoc:** http://localhost:8000/redoc
 
 ### Endpoints Disponíveis
 
@@ -283,19 +328,19 @@ O FastAPI gera automaticamente documentação:
 #### Listar emissões do tipo CRI em dezembro/2025
 
 ```bash
-curl "http://127.0.0.1:8000/emissoes?tipo=CRI&data_inicio=2025-12-01&data_fim=2025-12-31"
+curl "http://localhost:8000/emissoes?tipo=CRI&data_inicio=2025-12-01&data_fim=2025-12-31"
 ```
 
 #### Buscar emissões de um emissor específico
 
 ```bash
-curl "http://127.0.0.1:8000/emissoes?emissor=petrobras&sort_by=valor&sort_order=desc"
+curl "http://localhost:8000/emissoes?emissor=petrobras&sort_by=valor&sort_order=desc"
 ```
 
 #### Atualizar uma emissão
 
 ```bash
-curl -X PUT "http://127.0.0.1:8000/emissoes/1" \
+curl -X PUT "http://localhost:8000/emissoes/1" \
   -H "Content-Type: application/json" \
   -d '{
     "emissor": "Novo Nome do Emissor",
@@ -304,10 +349,11 @@ curl -X PUT "http://127.0.0.1:8000/emissoes/1" \
   }'
 ```
 
+
 #### Obter histórico de alterações
 
 ```bash
-curl "http://127.0.0.1:8000/emissoes/1/historico"
+curl "http://localhost:8000/emissoes/1/historico"
 ```
 
 ### Resposta de Exemplo (GET /emissoes)
@@ -553,6 +599,13 @@ Para demonstrar a aplicação em ambiente real, foi realizado o deploy utilizand
 
 > 💡 **Nota:** Por utilizar instâncias gratuitas no Render, o backend pode levar cerca de 40 segundos para inicializar na primeira requisição (cold start). Uma vez ativo, as respostas são processadas normalmente.
 ---
+### 4. Dockerização
+
+Projeto completamente containerizado com:
+- `Dockerfile.backend` - Container Python/FastAPI
+- `Dockerfile.frontend` - Container Node/React + Nginx
+- `docker-compose.yml` - Orquestração dos serviços
+---
 
 ## 👨‍💻 Autor
 
@@ -564,6 +617,14 @@ Desenvolvedor Fullstack | Estudante
 - LinkedIn: [Ryan Calmon](https://www.linkedin.com/in/ryan-calmon/)
 - Email: ryan@calmon.net.br
 
+---
+
+## 📊 Dados do Projeto
+
+- **Total de Emissões:** 1.349 registros
+- **Volume Total:** R$ 539,98 bilhões
+- **Tipos de Emissão:** CRI, CRA, DEB, NC
+- **Período:** Ano de 2025
 ---
 
 ## 📄 Licença
