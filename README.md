@@ -597,8 +597,7 @@ Para demonstrar a aplicação em ambiente real, foi realizado o deploy utilizand
 * **Backend (Render):** API FastAPI hospedada no Render, conectada ao banco SQLite persistente.
 * **Acesso Live:** [testejgp-ryancalmon.vercel.app](https://testejgp-ryancalmon.vercel.app/)
 
-> 💡 **Nota:** Por utilizar instâncias gratuitas no Render, o backend pode levar cerca de 40 segundos para inicializar na primeira requisição (cold start). Uma vez ativo, as respostas são processadas normalmente.
----
+> 💡 **Nota:** Por utilizar instâncias gratuitas no Render, o backend pode levar cerca de 40 segundos para inicializar na primeira requisição (cold start). Uma vez ativo, as respostas são processadas normalmente
 ### 4. Dockerização
 
 Projeto completamente containerizado com:
@@ -625,7 +624,6 @@ Desenvolvedor Fullstack | Estudante
 - **Volume Total:** R$ 539,98 bilhões
 - **Tipos de Emissão:** CRI, CRA, DEB, NC
 - **Período:** Ano de 2025
----
 
 ---
 
