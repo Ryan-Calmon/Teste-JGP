@@ -10,9 +10,16 @@ import os
 
 origins = [
     "http://localhost:5173",
+    "http://localhost:3000",
     "http://127.0.0.1:5173",
-    os.getenv("https://testejpg-ryancalmon.vercel.app/", "" ), 
+    "http://127.0.0.1:3000",
+    "https://testejgp-ryancalmon.vercel.app",
 ]
+
+# Também pode pegar de variável de ambiente
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    origins.append(frontend_url)
 
 # Remove strings vazias
 origins = [o for o in origins if o]
