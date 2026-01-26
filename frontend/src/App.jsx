@@ -10,6 +10,8 @@ import './App.css';
 function AppContent() {
   const { gestor } = useGestor();
   const [paginaAtual, setPaginaAtual] = useState('dashboard');
+  
+  const [menuAberto, setMenuAberto] = useState(false);
 
   const renderPagina = () => {
     switch (paginaAtual) {
@@ -28,9 +30,16 @@ function AppContent() {
       
       {gestor && (
         <>
-          <Header />
+          <Header onToggleMenu={() => setMenuAberto(!menuAberto)} />
+          
           <div className="app-container">
-            <Sidebar paginaAtual={paginaAtual} setPaginaAtual={setPaginaAtual} />
+            <Sidebar 
+              paginaAtual={paginaAtual} 
+              setPaginaAtual={setPaginaAtual}
+              isOpen={menuAberto}
+              closeMenu={() => setMenuAberto(false)}
+            />
+            
             <main className="main-content">
               {renderPagina()}
             </main>

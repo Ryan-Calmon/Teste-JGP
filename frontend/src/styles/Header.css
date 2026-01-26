@@ -7,11 +7,18 @@
   background: var(--primary);
   color: white;
   box-shadow: var(--shadow);
+  position: relative;
+  z-index: 1001; 
 }
 
-.header h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
+.header-left, .header-right, .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 40px;
+  width: auto;
 }
 
 .header-subtitle {
@@ -20,21 +27,7 @@
   margin-left: 12px;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.user-info { gap: 12px; }
 
 .user-avatar {
   width: 36px;
@@ -47,10 +40,36 @@
   font-weight: 600;
 }
 
-.user-name {
-  font-weight: 500;
+.user-name { font-weight: 500; }
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-right: 12px;
+  padding: 4px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
 }
-.header-logo {
-  height: 40px;
-  width: auto;
+
+.menu-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+  .menu-btn {
+    display: flex; 
+  }
+  
+  .header {
+    padding: 0 16px;
+  }
+
+  .header-subtitle {
+    display: none;
+  }
 }
