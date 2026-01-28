@@ -80,23 +80,47 @@ export default function Emissoes() {
     }
   };
 
-  const aplicarFiltros = () => {
-     if (filtros.dataInicio && filtros.dataFim) {
-    const inicio = new Date(filtros.dataInicio);
-    const fim = new Date(filtros.dataFim);
-    
-    if (inicio > fim) {
-      alert('A data inicial não pode ser maior que a data final!');
+  const validarDataReal = (dataString) => {
+    if (!dataString) return true; 
+    const [ano, mes, dia] = dataString.split('-').map(Number);
+    const dataObj = new Date(ano, mes - 1, dia);
+    return (
+      dataObj.getFullYear() === ano &&
+      dataObj.getMonth() === mes - 1 &&
+      dataObj.getDate() === dia
+    );
+  };
+
+  const aplicarFiltros = (e) => {
+    if (e) e.preventDefault();
+    // Validação de datas inexistentes (Ex: 31 de Novembro)
+    if (!validarDataReal(filtros.dataInicio)) {
+      alert('A Data de Início informada é inválida (dia inexistente no calendário).');
       return;
     }
-  }
-  const novosFiltros = {};
+    
+    if (!validarDataReal(filtros.dataFim)) {
+      alert('A Data de Fim informada é inválida (dia inexistente no calendário).');
+      return;
+    }
+
+    if (filtros.dataInicio && filtros.dataFim) {
+        const inicio = new Date(filtros.dataInicio);
+        const fim = new Date(filtros.dataFim);
+        
+        if (inicio > fim) {
+          alert('A data inicial não pode ser maior que a data final!');
+          return;
+        }
+      }
+    // Criação do objeto de filtros
+    const novosFiltros = {};
     if (filtros.tipo) novosFiltros.tipo = filtros.tipo;
     if (filtros.emissor) novosFiltros.emissor = filtros.emissor;
     if (filtros.valorMin) novosFiltros.valor_min = parseFloat(filtros.valorMin);
     if (filtros.valorMax) novosFiltros.valor_max = parseFloat(filtros.valorMax);
     if (filtros.dataInicio) novosFiltros.data_inicio = filtros.dataInicio;  
-    if (filtros.dataFim) novosFiltros.data_fim = filtros.dataFim;          
+    if (filtros.dataFim) novosFiltros.data_fim = filtros.dataFim;           
     
     setFiltrosAplicados(novosFiltros);
     setPage(1);
@@ -157,6 +181,7 @@ export default function Emissoes() {
 
       <div className="filtros-card">
         <h3> Filtros</h3>
+        <form onSubmit={aplicarFiltros}>
         <div className="filtros-grid">
           <div className="form-group">
             <label>Tipo</label>
@@ -219,14 +244,16 @@ export default function Emissoes() {
         </div>
         
         <div className="filtros-actions">
-          <button className="btn btn-secondary" onClick={limparFiltros}>
+          <button type="button" className="btn btn-secondary" onClick={limparFiltros}>
             Limpar
           </button>
-          <button className="btn btn-primary" onClick={aplicarFiltros}>
+          <button type="submit" className="btn btn-primary" >
             Aplicar Filtros
           </button>
         </div>
+         </form>
       </div>
+
 
       {/* Tabela */}
       <div className="table-card">
@@ -239,7 +266,15 @@ export default function Emissoes() {
           <div className="loading">Carregando...</div>
         ) : error ? (
           <div className="error">{error}</div>
-        ) : (
+        ) : emissoes.length === 0 ? ( 
+          <div className="no-results">
+            <h4>Nenhuma emissão encontrada</h4>
+            <p>Tente ajustar os filtros ou limpar a busca para ver mais resultados.</p>
+            <button className="btn btn-secondary" onClick={limparFiltros}>
+              Limpar Filtros
+            </button>
+          </div>
+  ) : (
           <>
             <div className="table-responsive">
               <table>
